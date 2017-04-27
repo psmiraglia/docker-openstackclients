@@ -28,6 +28,14 @@ Load the credential script obtained from Horizon
     +--------------------------------------+--------------+--------+
     | ...                                  | ...          | active |
 
+Load the credentials from environment file (see `openstack.env.example`)
+
+    $ docker run --rm -ti --env-file openstack.env psmiraglia/openstackclients openstack image list
+    +--------------------------------------+--------------+--------+
+    | ID                                   | Name         | Status |
+    +--------------------------------------+--------------+--------+
+    | ...                                  | ...          | active |
+
 ## Refererences
 
 *   [Docker](https://www.docker.com)
