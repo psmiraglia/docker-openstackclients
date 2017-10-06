@@ -4,8 +4,10 @@ MAINTAINER "Paolo Smiraglia <paolo.smiraglia@gmail.com>"
 
 RUN apk --update --no-cache add \
         gcc \
+        libffi-dev \
         linux-headers \
         musl-dev \
+        openssl-dev \
     && pip install \
         python-barbicanclient \
         python-ceilometerclient \
@@ -21,7 +23,9 @@ RUN apk --update --no-cache add \
         python-troveclient \
     && apk --update --no-cache del \
         gcc \
+        libffi-dev \
         linux-headers \
         musl-dev \
+        openssl-dev \
     && rm -fr \
         /var/cache/apk/*
