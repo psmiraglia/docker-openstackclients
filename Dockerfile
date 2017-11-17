@@ -1,6 +1,6 @@
 FROM python:alpine
 
-MAINTAINER "Paolo Smiraglia <paolo.smiraglia@gmail.com>"
+LABEL maintainer="Paolo Smiraglia <paolo.smiraglia@gmail.com>"
 
 RUN apk --update --no-cache add \
         gcc \
@@ -29,3 +29,5 @@ RUN apk --update --no-cache add \
         openssl-dev \
     && rm -fr \
         /var/cache/apk/*
+
+ENTRYPOINT ["/usr/local/bin/openstack"]
