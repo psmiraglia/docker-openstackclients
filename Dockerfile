@@ -1,33 +1,33 @@
 FROM python:alpine
 
-LABEL maintainer="Paolo Smiraglia <paolo.smiraglia@gmail.com>"
+LABEL maintainer="Paolo Smiraglia" \
+      maintainer.email="paolo.smiraglia@gmail.com"
 
+WORKDIR /osc
+COPY ./requirements.txt .
+
+# install tools
+RUN apk --update --no-cache add \
+        curl \
+        jq \
+        vim
+
+# install OpenStack clients
 RUN apk --update --no-cache add \
         gcc \
         libffi-dev \
         linux-headers \
         musl-dev \
         openssl-dev \
-    && pip install \
-        python-barbicanclient \
-        python-ceilometerclient \
-        python-cinderclient \
-        python-glanceclient \
-        python-heatclient \
-        python-ironicclient \
-        python-manilaclient \
-        python-neutronclient \
-        python-novaclient \
-        python-openstackclient \
-        python-swiftclient \
-        python-troveclient \
-    && apk --update --no-cache del \
+    && pip install -r requirements.txt \
+    && apk del \
         gcc \
         libffi-dev \
         linux-headers \
         musl-dev \
-        openssl-dev \
-    && rm -fr \
-        /var/cache/apk/*
+        openssl-dev
 
-ENTRYPOINT ["/usr/local/bin/openstack"]
+# cleanup
+RUN rm -fr /var/cache/apk/*
+
+CMD ["/bin/sh", "-l"]

@@ -1,0 +1,12 @@
+python-barbicanclient
+python-ceilometerclient
+python-cinderclient
+python-glanceclient
+python-heatclient
+python-ironicclient
+python-manilaclient
+python-neutronclient
+python-novaclient
+python-openstackclient
+python-swiftclient
+python-troveclient
