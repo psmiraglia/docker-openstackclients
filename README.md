@@ -12,13 +12,12 @@ Run the following command
 
 Simple example
 
-    $ docker run --rm -ti psmiraglia/openstackclients /bin/sh
-    / # openstack --version
-    openstack 3.9.0
+    $ docker run --rm -ti psmiraglia/openstackclients openstack --version
+    openstack 3.14.0
 
 Load the credential script obtained from Horizon
 
-    $ docker run --rm -ti -v ~/creds.sh:/creds.sh psmiraglia/openstackclients /bin/sh
+    $ docker run --rm -ti -v "/path/to/creds.sh:/creds.sh" psmiraglia/openstackclients
     / # openstack image list
     Missing value auth-url required for auth plugin password
     / # . /creds.sh
