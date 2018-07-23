@@ -1,3 +1,8 @@
+# The upstream repo (https://github.com/openstack/osc-lib) has an incomplete
+# fix (e3d7720). The repo was forked and the bug fully fixed (6d41c0f).
+git+https://github.com/psmiraglia/osc-lib.git
+
+# OpenStack clients
 gnocchiclient
 python-barbicanclient
 python-ceilometerclient

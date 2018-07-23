@@ -13,7 +13,7 @@ Run the following command
 Simple example
 
     $ docker run --rm -ti psmiraglia/openstackclients openstack --version
-    openstack 3.14.0
+    openstack 3.15.0
 
 Load the credential script obtained from Horizon
 
