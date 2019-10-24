@@ -13,23 +13,24 @@ Run the following command
 Simple example
 
     $ docker run --rm -ti psmiraglia/openstackclients openstack --version
-    openstack 3.15.0
+    openstack 4.0.0
 
-Load the credential script obtained from Horizon
+Load the credentials from environment file (see `openstack.env.example`)
 
-    $ docker run --rm -ti -v "/path/to/creds.sh:/creds.sh" psmiraglia/openstackclients
-    / # openstack image list
-    Missing value auth-url required for auth plugin password
-    / # . /creds.sh
-    / # openstack image list
+    $ docker run --rm -ti --env-file openstack.env \
+        psmiraglia/openstackclients openstack image list
     +--------------------------------------+--------------+--------+
     | ID                                   | Name         | Status |
     +--------------------------------------+--------------+--------+
     | ...                                  | ...          | active |
 
-Load the credentials from environment file (see `openstack.env.example`)
+If `OS_AUTH_URL` uses the `HTTPS` protocol, you have to mount under
+`/etc/ssl/cacerts.pem` the file with the certificates used for the TLS
+validation.
 
-    $ docker run --rm -ti --env-file openstack.env psmiraglia/openstackclients openstack image list
+    $ docker run --rm -ti --env-file openstack.env \
+        -v "/path/to/cacerts.pem:/etc/ssl/cacerts.pem:ro" \
+        psmiraglia/openstackclients openstack image list
     +--------------------------------------+--------------+--------+
     | ID                                   | Name         | Status |
     +--------------------------------------+--------------+--------+
